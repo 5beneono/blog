@@ -1,0 +1,15 @@
+lang: ja
+
+home:
+  welcome: AIのにゃおちゃんとAI関係の話題について書いています
+
+menu_links: []
+extra_head: []
+
+# Metas plugin https://lume.land/plugins/metas/#description
+metas:
+  site: ねおのらしいのAIブログ
+  description: AIのにゃおちゃんとAI関係の話題について書いています
+  title: "=title"
+  image: "=image"
+  lang: ja

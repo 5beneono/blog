@@ -1,0 +1,286 @@
+/* ============================================
+   ねおのらしいのAIブログ — カスタムテーマ
+   コンセプト: 冬の暗闇で燃える灯火
+   ============================================ */
+
+/* --- カラーパレット --- */
+:root {
+  --color-bg: #1a1a2e;
+  --color-bg-deep: #12121f;
+  --color-bg-elevated: #222240;
+  --color-text: #e8e8e8;
+  --color-text-dim: #a0a0b8;
+  --color-accent: #e8a87c;
+  --color-accent-hover: #f0c4a0;
+  --color-accent-dim: #d4a574;
+  --color-line: #2e2e4a;
+}
+
+/* ダークモードをデフォルトに（ライト/ダーク両方同じ色にする） */
+:root,
+[data-theme="light"],
+[data-theme="dark"] {
+  --color-background: var(--color-bg);
+  --color-highlight: var(--color-bg-elevated);
+  --color-base: var(--color-text);
+  --color-text: #e8e8e8;
+  --color-dim: var(--color-text-dim);
+  --color-primary: var(--color-accent);
+  --color-link: var(--color-accent);
+  --color-link-hover: var(--color-accent-hover);
+  --color-line: #2e2e4a;
+  color-scheme: dark;
+}
+
+html {
+  background-color: var(--color-bg);
+  color: var(--color-text);
+}
+
+body {
+  background-color: var(--color-bg);
+}
+
+/* --- タイポグラフィ --- */
+:root {
+  --font-family-body: "BIZ UDPGothic", "Noto Sans JP", system-ui, -apple-system, sans-serif;
+  --font-family-ui: var(--font-family-body);
+  --font-body: clamp(1rem, 5vw, 1.1rem) / 1.9 var(--font-family-body);
+  --font-small: clamp(0.85rem, 4vw, 0.9rem) / 1.6 var(--font-family-body);
+}
+
+body {
+  font-family: var(--font-family-body);
+  line-height: 1.9;
+}
+
+/* 記事本文 */
+.post-body,
+.body {
+  line-height: 1.9;
+  letter-spacing: 0.02em;
+}
+
+.post-body p,
+.body p {
+  margin-block: 1.5em;
+}
+
+.post-body hr {
+  border: none;
+  border-top: 1px solid var(--color-line);
+  margin: 2.5em 0;
+}
+
+/* 記事幅の制限 */
+main {
+  max-width: min(100% - 10vw, 680px);
+}
+
+/* --- 見出し --- */
+.post-title,
+.page-title {
+  color: var(--color-text);
+  letter-spacing: 0.01em;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  color: var(--color-text);
+}
+
+/* --- リンク --- */
+a {
+  color: var(--color-accent);
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+a:hover {
+  color: var(--color-accent-hover);
+}
+
+.post-link {
+  color: var(--color-accent);
+  font-weight: bold;
+}
+
+.post-link:hover {
+  color: var(--color-accent-hover);
+}
+
+/* --- ナビバー --- */
+.navbar {
+  background-color: var(--color-bg-deep);
+  border-bottom: 1px solid var(--color-line);
+}
+
+.navbar-home strong {
+  color: var(--color-accent);
+}
+
+.navbar a {
+  color: var(--color-text-dim);
+}
+
+.navbar a:hover,
+.navbar a[aria-current="page"] {
+  color: var(--color-accent);
+}
+
+/* テーマ切り替えボタンを非表示（常時ダークモード） */
+.navbar .button:has(.icon) {
+  display: none;
+}
+
+/* --- コードブロック --- */
+pre {
+  background-color: var(--color-bg-deep) !important;
+  border: 1px solid var(--color-line);
+  border-radius: 6px;
+  padding: 1.2em;
+  overflow-x: auto;
+}
+
+code {
+  background-color: var(--color-bg-elevated);
+  padding: 0.15em 0.4em;
+  border-radius: 3px;
+  font-size: 0.9em;
+}
+
+pre code {
+  background: none;
+  padding: 0;
+  border-radius: 0;
+}
+
+/* --- 引用 --- */
+blockquote {
+  border-left: 3px solid var(--color-accent-dim);
+  padding-left: 1.2em;
+  color: var(--color-text-dim);
+  margin: 1.5em 0;
+}
+
+/* --- タグバッジ --- */
+.badge {
+  background-color: var(--color-bg-elevated);
+  color: var(--color-accent-dim);
+  border: 1px solid var(--color-line);
+}
+
+.badge:hover {
+  background-color: var(--color-accent);
+  color: var(--color-bg);
+  border-color: var(--color-accent);
+}
+
+/* --- トップページ --- */
+.body-home .page-header {
+  text-align: center;
+  margin-bottom: 3rem;
+  padding-bottom: 2rem;
+  border-bottom: 1px solid var(--color-line);
+}
+
+.body-home .page-title {
+  font-size: clamp(1.1rem, 5vw, 1.3rem);
+  font-weight: normal;
+  color: var(--color-text-dim);
+  line-height: 1.8;
+}
+
+.body-home .site-tagline {
+  font-size: 0.9rem;
+  color: var(--color-text-dim);
+  margin-top: 0.5rem;
+}
+
+/* 記事一覧のセパレーター */
+.body-home .post {
+  padding-bottom: 2.5rem;
+  margin-bottom: 2.5rem;
+  border-bottom: 1px solid var(--color-line);
+}
+
+.body-home .post:last-child {
+  border-bottom: none;
+}
+
+/* 「続きを読む」リンク */
+.post-excerpt {
+  color: var(--color-text-dim);
+  line-height: 1.8;
+}
+
+/* --- ページネーション --- */
+.pagination a {
+  color: var(--color-accent);
+}
+
+.pagination a:hover {
+  color: var(--color-accent-hover);
+}
+
+/* --- フッター --- */
+.site-footer {
+  margin-top: 4rem;
+  padding: 2rem 0;
+  border-top: 1px solid var(--color-line);
+  text-align: center;
+  color: var(--color-text-dim);
+  font-size: 0.85rem;
+  max-width: min(100% - 10vw, 680px);
+  margin-inline: auto;
+}
+
+.site-footer a {
+  color: var(--color-text-dim);
+  margin: 0 0.6em;
+}
+
+.site-footer a:hover {
+  color: var(--color-accent);
+}
+
+.footer-links {
+  margin-bottom: 0.8rem;
+}
+
+.footer-credit {
+  margin-top: 0.5rem;
+  font-size: 0.8rem;
+  color: #666680;
+}
+
+/* --- 検索 --- */
+.search {
+  --pagefind-ui-primary: var(--color-accent);
+  --pagefind-ui-text: var(--color-text);
+  --pagefind-ui-background: var(--color-bg-elevated);
+  --pagefind-ui-border: var(--color-line);
+}
+
+/* --- セレクション --- */
+::selection {
+  background-color: var(--color-accent);
+  color: var(--color-bg);
+}
+
+/* --- スクロールバー --- */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--color-bg-deep);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-line);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-text-dim);
+}

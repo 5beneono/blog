@@ -6,12 +6,29 @@ bodyClass: body-post
   <header class="post-header">
     <h1 class="post-title">{{ title }}</h1>
 
-    {{ include "templates/post-details.vto" }}
+    <div class="post-meta">
+      <div class="post-author-avatar">ね</div>
+      <div class="post-meta-info">
+        <span class="post-author-name">ねおのらしい</span>
+        <span class="post-meta-sep">·</span>
+        <time datetime="{{ date |> date('DATE') }}">{{ date |> date('DATE') }}</time>
+        {{ if readingInfo }}
+        <span class="post-meta-sep">·</span>
+        <span>{{ readingInfo.minutes }} min read</span>
+        {{ /if }}
+        {{ if tags }}
+        <span class="post-meta-sep">·</span>
+        {{ for tag of tags }}
+        <a href="/tags/{{ tag }}/" class="badge" data-pagefind-filter="tag">{{ tag }}</a>
+        {{ /for }}
+        {{ /if }}
+      </div>
+    </div>
   </header>
 
   {{ if toc.length }}
   <nav class="toc">
-    <h2>{{ i18n.nav.toc }}</h2>
+    <h2>TABLE OF CONTENTS</h2>
     <ol>
       {{ for item of toc }}
       <li>
@@ -39,8 +56,12 @@ bodyClass: body-post
   {{- set shareUrl = url |> url(true) }}
   {{- set shareText = title + " - " + metas.site }}
   <div class="share-buttons">
-    <span class="share-label">共有</span>
-    <a href="https://x.com/intent/tweet?url={{ shareUrl |> encodeURIComponent }}&text={{ shareText |> encodeURIComponent }}" target="_blank" rel="noopener" class="share-btn share-x">X</a>
+    <span class="share-label">この記事をシェア</span>
+    <a href="https://x.com/intent/tweet?url={{ shareUrl |> encodeURIComponent }}&text={{ shareText |> encodeURIComponent }}" target="_blank" rel="noopener" class="share-btn share-x">
+      <svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+      <span>X</span>
+    </a>
+    <a href="https://b.hatena.ne.jp/entry/{{ shareUrl }}" target="_blank" rel="noopener" class="share-btn">はてな</a>
     <button class="share-btn share-copy" onclick="navigator.clipboard.writeText('{{ shareUrl }}').then(()=>{this.textContent='Copied!';setTimeout(()=>{this.textContent='コピー'},2000)})">コピー</button>
   </div>
 

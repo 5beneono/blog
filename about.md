@@ -3,9 +3,7 @@ layout: layouts/base.vto
 title: About
 bodyClass: body-post
 menu:
-  visible: true
-  order: 2
-  title: About
+  visible: false
 ---
 
 <div class="post-body body">

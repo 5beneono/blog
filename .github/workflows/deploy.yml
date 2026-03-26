@@ -15,7 +15,12 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - uses: denoland/setup-deno@v2
+      - name: Download OGP font
+        run: |
+          mkdir -p fonts
+          curl -sLo fonts/NotoSansCJKjp-Bold.otf "https://github.com/notofonts/noto-cjk/raw/main/Sans/OTF/Japanese/NotoSansCJKjp-Bold.otf"
       - run: deno task build
+      - run: rm -rf _site/fonts
       - uses: actions/upload-pages-artifact@v3
         with:
           path: _site

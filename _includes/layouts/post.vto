@@ -1,0 +1,83 @@
+---
+layout: layouts/base.vto
+bodyClass: body-post
+---
+<article class="post" data-pagefind-body data-title="{{ title }}" data-pagefind-index-attrs="data-title">
+  <header class="post-header">
+    <h1 class="post-title">{{ title }}</h1>
+
+    {{ include "templates/post-details.vto" }}
+  </header>
+
+  {{ if toc.length }}
+  <nav class="toc">
+    <h2>{{ i18n.nav.toc }}</h2>
+    <ol>
+      {{ for item of toc }}
+      <li>
+        <a href="#{{ item.slug }}">{{ item.text }}</a>
+
+        {{ if item.children.length }}
+        <ul>
+          {{ for child of item.children }}
+          <li>
+            <a href="#{{ child.slug }}">{{ child.text }}</a>
+          </li>
+          {{ /for }}
+        </ul>
+        {{ /if }}
+      </li>
+      {{ /for }}
+    </ol>
+  </nav>
+  {{ /if }}
+
+  <div class="post-body body">
+    {{ content }}
+  </div>
+
+  {{- set shareUrl = url |> url(true) }}
+  {{- set shareText = title + " - " + metas.site }}
+  <div class="share-buttons">
+    <span class="share-label">共有</span>
+    <a href="https://x.com/intent/tweet?url={{ shareUrl |> encodeURIComponent }}&text={{ shareText |> encodeURIComponent }}" target="_blank" rel="noopener" class="share-btn share-x">X</a>
+    <button class="share-btn share-copy" onclick="navigator.clipboard.writeText('{{ shareUrl }}').then(()=>{this.textContent='Copied!';setTimeout(()=>{this.textContent='コピー'},2000)})">コピー</button>
+  </div>
+
+  {{ if it.footnotes.length }}
+  <aside role="note" class="footnotes">
+    <dl>
+      {{ for note of footnotes }}
+      <div id={{ note.id }} class="footnote">
+        <dt><a href="#{{ note.refId }}">{{ note.label }}</a></dt>
+        <dd>{{ note.content }}</dd>
+      </div>
+      {{ /for }}
+    </dl>
+  </aside>
+  {{ /if }}
+</article>
+
+<nav class="page-pagination pagination">
+  <ul>
+    {{- set previousPost = search.previousPage(url, "type=post") }}
+    {{- if previousPost }}
+    <li class="pagination-prev">
+      <a href="{{ previousPost.url }}" rel="prev">
+        <span>{{ i18n.nav.previous_post }}</span>
+        <strong>{{ previousPost.title }}</strong>
+      </a>
+    </li>
+    {{ /if }}
+
+    {{- set nextPost = search.nextPage(url, "type=post") }}
+    {{- if nextPost }}
+    <li class="pagination-next">
+      <a href="{{ nextPost.url }}" rel="next">
+        <span>{{ i18n.nav.next_post }}</span>
+        <strong>{{ nextPost.title }}</strong>
+      </a>
+    </li>
+    {{ /if }}
+  </ul>
+</nav>

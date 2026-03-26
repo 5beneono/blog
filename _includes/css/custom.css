@@ -175,42 +175,194 @@ blockquote {
   border-color: var(--color-accent);
 }
 
-/* --- トップページ --- */
-.body-home .page-header {
+/* --- プロフィールセクション --- */
+.profile-section {
   text-align: center;
-  margin-bottom: 3rem;
-  padding-bottom: 2rem;
-  border-bottom: 1px solid var(--color-line);
-}
-
-.body-home .page-title {
-  font-size: clamp(1.1rem, 5vw, 1.3rem);
-  font-weight: normal;
-  color: var(--color-text-dim);
-  line-height: 1.8;
-}
-
-.body-home .site-tagline {
-  font-size: 0.9rem;
-  color: var(--color-text-dim);
-  margin-top: 0.5rem;
-}
-
-/* 記事一覧のセパレーター */
-.body-home .post {
-  padding-bottom: 2.5rem;
+  padding: 3rem 0 2.5rem;
   margin-bottom: 2.5rem;
   border-bottom: 1px solid var(--color-line);
 }
 
-.body-home .post:last-child {
+.profile-avatar {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  margin: 0 auto 1rem;
+  background-color: var(--color-bg-elevated);
+  border: 2px solid var(--color-accent-dim);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2rem;
+  color: var(--color-accent);
+}
+
+.profile-name {
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: var(--color-text);
+  margin: 0 0 0.5rem;
+}
+
+.profile-bio {
+  font-size: 0.9rem;
+  color: var(--color-text-dim);
+  margin: 0 0 1rem;
+  line-height: 1.6;
+}
+
+.profile-links {
+  display: flex;
+  justify-content: center;
+  gap: 0.8rem;
+}
+
+.profile-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: var(--color-bg-elevated);
+  border: 1px solid var(--color-line);
+  color: var(--color-text-dim);
+  transition: all 0.2s ease;
+}
+
+.profile-icon:hover {
+  color: var(--color-accent);
+  border-color: var(--color-accent);
+  background-color: rgba(232, 168, 124, 0.1);
+}
+
+/* --- ミニマル記事リスト --- */
+.posts-minimal {
+  margin-bottom: 2rem;
+}
+
+.posts-heading {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--color-text);
+  margin-bottom: 1.2rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid var(--color-line);
+}
+
+.posts-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.posts-item {
+  border-bottom: 1px solid var(--color-line);
+}
+
+.posts-item:last-child {
   border-bottom: none;
 }
 
-/* 「続きを読む」リンク */
-.post-excerpt {
+.posts-item-link {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 1rem;
+  padding: 0.8rem 0;
+  color: var(--color-text);
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.posts-item-link:hover {
+  color: var(--color-accent);
+}
+
+.posts-item-title {
+  font-size: 1rem;
+  line-height: 1.5;
+}
+
+.posts-item-date {
+  font-size: 0.8rem;
   color: var(--color-text-dim);
-  line-height: 1.8;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+/* --- 共有ボタン --- */
+.share-buttons {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  margin-top: 2.5rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--color-line);
+}
+
+.share-label {
+  font-size: 0.85rem;
+  color: var(--color-text-dim);
+  margin-right: 0.3rem;
+}
+
+.share-btn {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.4em 1em;
+  font-size: 0.85rem;
+  border-radius: 4px;
+  border: 1px solid var(--color-line);
+  background-color: var(--color-bg-elevated);
+  color: var(--color-text-dim);
+  cursor: pointer;
+  transition: all 0.2s ease;
+  text-decoration: none;
+  font-family: inherit;
+}
+
+.share-btn:hover {
+  color: var(--color-accent);
+  border-color: var(--color-accent);
+}
+
+/* --- 目次 (TOC) --- */
+.toc {
+  background-color: var(--color-bg-elevated);
+  border: 1px solid var(--color-line);
+  border-radius: 6px;
+  padding: 1.2rem 1.5rem;
+  margin: 2rem 0;
+}
+
+.toc h2 {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--color-text);
+  margin: 0 0 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.toc ol,
+.toc ul {
+  margin: 0;
+  padding-left: 1.2rem;
+}
+
+.toc li {
+  margin: 0.3rem 0;
+  font-size: 0.9rem;
+  line-height: 1.5;
+}
+
+.toc a {
+  color: var(--color-accent);
+}
+
+.toc a:hover {
+  color: var(--color-accent-hover);
 }
 
 /* --- ページネーション --- */

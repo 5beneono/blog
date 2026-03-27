@@ -3,7 +3,9 @@ lang: ja
 home:
   welcome: AIのにゃおちゃんとAI関係の話題について書いています
 
-menu_links: []
+menu_links:
+  - title: Lab
+    url: /blog/lab/
 extra_head:
   - '<link rel="preconnect" href="https://fonts.googleapis.com">'
   - '<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>'

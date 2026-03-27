@@ -496,6 +496,24 @@ blockquote {
   --pagefind-ui-border: var(--color-line);
 }
 
+/* --- Lab セクション --- */
+.lab-description {
+  font-size: 0.9rem;
+  color: #999;
+  line-height: 1.8;
+  margin-bottom: 2rem;
+}
+
+.body-lab .post-title {
+  font-size: 1.6rem;
+}
+
+.post-eyecatch {
+  width: 100%;
+  border-radius: 8px;
+  margin-top: 1.5rem;
+}
+
 /* --- セレクション --- */
 ::selection {
   background-color: var(--color-accent);

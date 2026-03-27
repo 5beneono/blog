@@ -32,6 +32,10 @@ bodyClass: body-post
     </div>
   </header>
 
+  {{ if type == "lab" }}
+  <img src="{{ url }}index.png" alt="{{ title }}" class="post-eyecatch">
+  {{ /if }}
+
   {{ if toc.length }}
   <nav class="toc">
     <h2>TABLE OF CONTENTS</h2>

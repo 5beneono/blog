@@ -1,3 +1,4 @@
 type: lab
 layout: layouts/post.vto
 openGraphLayout: layouts/og_image.jsx
+bodyClass: body-lab

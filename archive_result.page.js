@@ -2,7 +2,8 @@ export const layout = "layouts/archive_result.vto";
 
 export default function* ({ search, i18n, paginate }) {
   // Generate a page for each tag
-  for (const tag of search.values("tags")) {
+  for (const tag of search.values("tags", "type=post")) {
+    if (!tag) continue;
     const url = (n) => (n === 1) ? `/tags/${tag}/` : `/tags/${tag}/${n}/`;
     const pages = search.pages(`type=post '${tag}'`);
 

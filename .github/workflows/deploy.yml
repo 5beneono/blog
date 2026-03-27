@@ -27,6 +27,7 @@ jobs:
           git clone --depth 1 https://github.com/5beneono/lab.git /tmp/lab
           mkdir -p ./lab
           cp -r /tmp/lab/posts/*.md ./lab/
+          sed -i 's/^tags: \[\]$/tags: [lab]/' ./lab/*.md
       - run: deno task build
       - run: rm -rf _site/fonts
       - uses: actions/upload-pages-artifact@v3

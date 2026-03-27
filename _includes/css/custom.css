@@ -508,12 +508,6 @@ blockquote {
   font-size: 1.6rem;
 }
 
-.post-eyecatch {
-  width: 100%;
-  border-radius: 8px;
-  margin-top: 1.5rem;
-}
-
 /* --- セレクション --- */
 ::selection {
   background-color: var(--color-accent);

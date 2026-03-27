@@ -28,5 +28,6 @@ site.use(ogImages({
 }));
 site.use(blog());
 site.ignore("fonts");
+site.copy("avatar.png");
 
 export default site;

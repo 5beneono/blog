@@ -7,9 +7,15 @@ bodyClass: body-post
     <h1 class="post-title">{{ title }}</h1>
 
     <div class="post-meta">
+      {{ if type == "lab" }}
+      <img src="/nyaono-avatar.png" alt="にゃおの" class="post-author-avatar" width="36" height="36">
+      <div class="post-meta-info">
+        <span class="post-author-name">にゃおの</span>
+      {{ else }}
       <img src="/avatar.png" alt="ねおの" class="post-author-avatar" width="36" height="36">
       <div class="post-meta-info">
         <span class="post-author-name">ねおのらしい</span>
+      {{ /if }}
         <span class="post-meta-sep">·</span>
         <time datetime="{{ date |> date('DATE') }}">{{ date |> date('DATE') }}</time>
         {{ if readingInfo }}

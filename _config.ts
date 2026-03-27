@@ -29,5 +29,6 @@ site.use(ogImages({
 site.use(blog());
 site.ignore("fonts");
 site.copy("avatar.png");
+site.copy("nyaono-avatar.png");
 
 export default site;

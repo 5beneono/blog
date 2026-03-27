@@ -30,10 +30,9 @@
       </a>
 
       <ul class="navbar-links">
-        <li><a href="/about/"{{ if url == "/about/" }} aria-current="page"{{ /if }}>About</a></li>
-        <li><a href="/"{{ if url == "/" }} aria-current="page"{{ /if }}>Blog</a></li>
-        <li><a href="/lab/"{{ if url == "/lab/" }} aria-current="page"{{ /if }}>Lab</a></li>
-        <li><a href="/archive/"{{ if url == "/archive/" }} aria-current="page"{{ /if }}>Archive</a></li>
+        {{ for link of it.menu_links }}
+        <li><a href="{{ link.url }}"{{ if url == link.url }} aria-current="page"{{ /if }}>{{ link.title }}</a></li>
+        {{ /for }}
       </ul>
     </nav>
 

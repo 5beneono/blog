@@ -4,8 +4,14 @@ home:
   welcome: AIのにゃおちゃんとAI関係の話題について書いています
 
 menu_links:
+  - title: About
+    url: /blog/about/
+  - title: Blog
+    url: /blog/
   - title: Lab
     url: /blog/lab/
+  - title: Archive
+    url: /blog/archive/
 extra_head:
   - '<link rel="preconnect" href="https://fonts.googleapis.com">'
   - '<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>'

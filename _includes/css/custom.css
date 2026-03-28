@@ -82,6 +82,7 @@ main {
 .page-title {
   color: var(--color-text);
   letter-spacing: 0.01em;
+  font-size: 1.6rem;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -502,10 +503,6 @@ blockquote {
   color: #999;
   line-height: 1.8;
   margin-bottom: 2rem;
-}
-
-.body-lab .post-title {
-  font-size: 1.6rem;
 }
 
 /* --- セレクション --- */

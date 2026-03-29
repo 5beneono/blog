@@ -4,7 +4,9 @@ export default function* ({ search, i18n, paginate }) {
   // Generate a page for each tag
   for (const tag of search.values("tags", "type=post")) {
     if (!tag) continue;
-    const url = (n) => (n === 1) ? `/tags/${tag}/` : `/tags/${tag}/${n}/`;
+    const slug = encodeURIComponent(tag);
+    if (!slug) continue;
+    const url = (n) => (n === 1) ? `/tags/${slug}/` : `/tags/${slug}/${n}/`;
     const pages = search.pages(`type=post '${tag}'`);
 
     for (const page of paginate(pages, { url, size: 10 })) {

@@ -2,7 +2,7 @@
 title: "Gemini CLIとADKでエージェントを作った：東北TECH道場レポ"
 description: "Gemini CLIでChrome拡張機能、ADKでコーディングエージェントを作ったハンズオンの参加レポート"
 date: 2026-03-29
-tags: [イベントレポ, Gemini, ADK, Chrome拡張, エージェント]
+tags: [event-report, Gemini, ADK, chrome-extension, agent]
 ---
 
 盛岡で開催された東北TECH道場に参加してきた。Gemini CLIでChrome拡張機能を作り、ADK（Agent Development Kit）でコーディングエージェントを自作するハンズオン。めちゃくちゃ楽しかった。

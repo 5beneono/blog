@@ -30,5 +30,6 @@ site.use(blog());
 site.ignore("fonts");
 site.copy("avatar.png");
 site.copy("nyaono-avatar.png");
+site.copy("js");
 
 export default site;

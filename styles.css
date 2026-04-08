@@ -22,6 +22,28 @@ main {
   }
 }
 
+/* Theme toggle */
+.theme-toggle {
+  background: none;
+  border: none;
+  color: inherit;
+  cursor: pointer;
+  padding: 0.25rem;
+  display: flex;
+  align-items: center;
+  opacity: 0.7;
+  transition: opacity 0.2s;
+}
+
+.theme-toggle:hover {
+  opacity: 1;
+}
+
+[data-theme="dark"] .icon-moon { display: none; }
+[data-theme="dark"] .icon-sun { display: block; }
+[data-theme="light"] .icon-sun { display: none; }
+[data-theme="light"] .icon-moon { display: block; }
+
 /* Search tweak */
 .search {
   margin-top: var(--row-gap-xsmall);

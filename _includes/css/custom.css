@@ -3,8 +3,9 @@
    コンセプト: 冬の暗闇で燃える灯火
    ============================================ */
 
-/* --- カラーパレット --- */
-:root {
+/* --- カラーパレット（ダーク） --- */
+:root,
+[data-theme="dark"] {
   --color-bg: #1a1a2e;
   --color-bg-deep: #12121f;
   --color-bg-elevated: #222240;
@@ -14,22 +15,35 @@
   --color-accent-hover: #f0c4a0;
   --color-accent-dim: #d4a574;
   --color-line: #2e2e4a;
+  --color-background: #1a1a2e;
+  --color-highlight: #222240;
+  --color-base: #e8e8e8;
+  --color-dim: #a0a0b8;
+  --color-primary: #e8a87c;
+  --color-link: #e8a87c;
+  --color-link-hover: #f0c4a0;
+  color-scheme: dark;
 }
 
-/* ダークモードをデフォルトに（ライト/ダーク両方同じ色にする） */
-:root,
-[data-theme="light"],
-[data-theme="dark"] {
-  --color-background: var(--color-bg);
-  --color-highlight: var(--color-bg-elevated);
-  --color-base: var(--color-text);
-  --color-text: #e8e8e8;
-  --color-dim: var(--color-text-dim);
-  --color-primary: var(--color-accent);
-  --color-link: var(--color-accent);
-  --color-link-hover: var(--color-accent-hover);
-  --color-line: #2e2e4a;
-  color-scheme: dark;
+/* --- カラーパレット（ライト） --- */
+[data-theme="light"] {
+  --color-bg: #faf8f5;
+  --color-bg-deep: #f0ece6;
+  --color-bg-elevated: #fff;
+  --color-text: #2a2a2a;
+  --color-text-dim: #6b6b6b;
+  --color-accent: #c06030;
+  --color-accent-hover: #a04820;
+  --color-accent-dim: #b87040;
+  --color-line: #e0d8d0;
+  --color-background: #faf8f5;
+  --color-highlight: #fff;
+  --color-base: #2a2a2a;
+  --color-dim: #6b6b6b;
+  --color-primary: #c06030;
+  --color-link: #c06030;
+  --color-link-hover: #a04820;
+  color-scheme: light;
 }
 
 html {
@@ -143,10 +157,6 @@ a:hover {
   color: var(--color-accent);
 }
 
-/* テーマ切り替えボタンを非表示（常時ダークモード） */
-.navbar .button:has(.icon) {
-  display: none;
-}
 
 /* --- コードブロック --- */
 pre {
@@ -486,7 +496,7 @@ blockquote {
 .footer-credit {
   margin-top: 0.5rem;
   font-size: 0.8rem;
-  color: #666680;
+  color: var(--color-dim);
 }
 
 /* --- 検索 --- */
@@ -500,7 +510,7 @@ blockquote {
 /* --- Lab セクション --- */
 .lab-description {
   font-size: 0.9rem;
-  color: #999;
+  color: var(--color-text-dim);
   line-height: 1.8;
   margin-bottom: 2rem;
 }

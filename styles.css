@@ -26,3 +26,31 @@ main {
 .search {
   margin-top: var(--row-gap-xsmall);
 }
+
+/* Pagination */
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1.5rem;
+  margin-top: 2rem;
+  padding: 1rem 0;
+}
+
+.pagination-link {
+  color: var(--color-primary, #8b9fcc);
+  text-decoration: none;
+  padding: 0.4rem 0.8rem;
+  border: 1px solid var(--color-primary, #8b9fcc);
+  border-radius: 4px;
+  transition: opacity 0.2s;
+}
+
+.pagination-link:hover {
+  opacity: 0.7;
+}
+
+.pagination-info {
+  color: var(--color-dim, #888);
+  font-size: 0.9rem;
+}

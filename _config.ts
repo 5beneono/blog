@@ -32,4 +32,12 @@ site.copy("avatar.png");
 site.copy("nyaono-avatar.png");
 site.copy("js");
 
+site.preprocess("*", (pages) => {
+  for (const page of pages) {
+    if (page.data.type === "lab" && page.data.slug) {
+      page.data.url = `/lab/${page.data.slug}/`;
+    }
+  }
+});
+
 export default site;

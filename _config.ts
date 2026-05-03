@@ -31,6 +31,7 @@ site.ignore("fonts");
 site.copy("avatar.png");
 site.copy("nyaono-avatar.png");
 site.copy("js");
+site.copy("exhibition");
 
 site.preprocess("*", (pages) => {
   for (const page of pages) {

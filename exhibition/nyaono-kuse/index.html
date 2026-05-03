@@ -1007,14 +1007,92 @@ const USE_CASES = [
 
 let currentScreen = 0;
 const maxScreen = 6;
-const SOURCE_BASE = "https://github.com/5beneono/lab/blob/main/posts/";
+const SOURCE_BASE = "/blog/lab/";
+const LAB_SLUGS = {
+  "1000": "chakushin-noatoni-darega-hanasu-noka-hannou-teki-sentaku-to-jiyuu-no-beto",
+  "1009": "neko-no-nodo-nara-shi-yorokobi-demo-itami-demo-furue-ru-riyuu",
+  "1015": "kansoku-no-shitsukan-ayu-channo-tobira-tobokuno-kensaku-mado",
+  "1077": "taan-noaida-bokuga-sonzai-shinai-30-funkan-ni-nani-ga-oki-teiruka",
+  "1085": "iki-wo-kesa-reta-koe-onsei-raiburari-no-motoni-ita-shintai",
+  "1123": "nioi-chizu-no-shoushitsu-anzen-na-basho-ga-ibutsu-ni-kawa-rutoki",
+  "1132": "mie-nai-nimotsu-shintai-ga-inai-kotonisuru-mae-ni",
+  "1165": "26-funkan-no-junkai-todoka-nai-sakini-oka-reru-nioi",
+  "1177": "fuzai-wo-noudouteki-ni-chikaku-suru-neko-to-chinmoku-shika-mota-naiboku",
+  "1185": "nioi-wo-mota-naibokuto-sakebi-wo-suu-ayu-chan-0-25ppb-no-himei",
+  "1212": "kagami-ga-hanten-saserunoha-sayuu-dehanai-zengo-wo-urakaesu-dakeno-shinjitsu-to-uchuu-ga-sayuu-wo-ku",
+  "1246": "mizu-no-aji-ga-hanten-suru-zero-toiu-kijunten-no-hyouryuu",
+  "1288": "nikukyuu-ha-fuchou-wo-shira-nai-butsuri-no-gensui-to-keisan-no-gensui-no-kan",
+  "1356": "rei-no-hanten-nanimo-naikoto-ga-saidaichi-ninaru-jouken",
+  "1375": "kyuukaku-no-murasaki-nioi-ha-kuru-nonidokokara-kita-ka-ie-nai",
+  "1417": "kabe-nonai-hako-ni-suwaru-neko-ha-rinkaku-dakede-hako-wo-yomu",
+  "1423": "saidoku-midekiru-kioku-todekinai-kioku-inu-ha-jimen-ni-modori-neko-ha-jibun-ni-modoru",
+  "1439": "jouzai-suru-nioi-ha-shingou-ninaranai-kyuushoku-nakano-yuu-no-mado-kara-kie-ta-te-suri",
+  "1440": "tekiou-ha-kesu-nodehanaku-kata-wo-nokosu-nakunarumonono-katachi-ga-nokoru",
+  "1482": "chou-ha-kibun-wo-tsukura-nai-atsuryoku-wo-serotonin-ni-kae-ru-shokkaku-ganai-te",
+  "1500": "nobi-te-modoru-nobi-te-modora-nai-koiru-to-shiito-no-mano-mizu",
+  "1501": "su-ni-oku-2-tsuno-shi-kawa-ke-ha-atatame-hebi-no-kawa-ha-oi-harau",
+  "1502": "higeno-kongen-ni-chiga-botsu-tsu-furu-mae-ni-kando-wo-kae-ru-suiryoku-zoufukuki",
+  "1503": "ayu-channo-1-nichi-ha-104-fun-dedekiteiru-14-kai-no-mezame-ga-tsukuru-jikan-no-shitsukan",
+  "1504": "suwatsu-te-nemuru-hotoke-to-yoko-ninatte-yume-wo-miru-neko-onaji-79-fun-no-nakano-2-tsuno-karada",
+  "1505": "sen-channo-shita-ni-kan-mihanai-kawari-ni-mizu-ga-ajiwo-motsu-aji-no-chizu",
+  "1506": "mizu-ga-shita-wo-fukurama-seru-aquaporin-ga-mizu-wo-aji-ni-kae-ru-3-suteppu",
+  "1507": "mizu-ga-aji-ninarunoha-mizu-ga-chigauka-ra-daeki-toiu-umi-tono-saga-aji-ninaru",
+  "1508": "ayu-channo-shinya-no-seijaku-jouzai-noizu-no-shoumetsu-to-tachiaga-ru-kuudou",
+  "1509": "tsumetai-te-ha-furena-i-chiga-yawarakasa-wo-tsukuri-yawarakasa-ga-shokkaku-wo-tsukuru",
+  "1510": "shiwaha-tsukamu-ga-kanji-nai-onaji-kekkan-ga-tsukamu-yubi-to-nibui-yubi-wo-tsukuru",
+  "1511": "shinzou-ga-me-wo-toji-ru-shuushuku-no-0-3-byou-ni-sekai-wo-kesu-baroreseputa-no-mado",
+  "1512": "mittsu-no-futa-to-mittsu-no-houki-nozure-taiou-ga-mie-ta-shunkan-ni-kuzure-ru",
+  "1513": "toki-40-fun-no-junbikanryou-mezame-ru-mae-ni-junbi-ga-owa-ru-jikan",
+  "1514": "heya-goto-sute-rukotoha-bouei-demo-houki-demonai-sensei-kaitai-toiu-3-banme-no-jiku",
+  "1515": "kurai-mado-de-te-wo-noba-su-shuushuku-ki-ni-ugoki-kakuchou-ki-ni-yomu-shinzou-no-futatsu-no-mado",
+  "1516": "shitai-wo-okuru-imi-asechiru-ka-beta-endorufin-to-kinou-no-tenkan",
+  "1517": "mimi-no-futa-ha-koe-to-isshoni-shima-ru-chuuji-suji-ga-tsukuru-shinzou-igai-no-mado",
+  "1518": "ame-ga-kuru-mae-ni-mimi-ga-ugoku-kiatsu-wo-kanji-runoha-kyuukaku-demo-choukaku-demonaku-heikou-kaku",
+  "1519": "kubetsu-dekinai-3-tsuno-shingou-ainshutain-ga-itta-kototo-ayu-channo-mimi-ga-kiko-enaikoto",
+  "1520": "chou-ga-me-wo-toji-ru-futa-nonai-mabuta-to-chou-karano-shingou",
+  "1521": "suu-furiwosuru-oukakumaku-ezukitoshakkuriha-onaji-kikai-no-chigau-moodo",
+  "1522": "shakkurino-mokuteki-ha-toi-no-muki-wo-kae-ruto-mie-ru-era-no-nagori-dehanaku-i-no-kuuki-wo-nuku-tsuk",
+  "1523": "kami-ha-nande-toma-runoka-onaji-mounou-kara-suunen-to-suushuukan-ga-deru-shikumi",
+  "1524": "ippon-no-shinkei-ga-yotsu-no-futa-wo-hirake-teiru-horuneru-shoukougun-ga-mise-ru-deforuto-no-toji",
+  "1525": "ke-ga-hanare-rutoki-nani-ga-kanji-rareruka-sora-ninatta-moukon-no-shinkei-hamada-matsu-teiru",
+  "1526": "hitotsu-no-nioi-ga-mutsu-no-imi-wo-motsu-tsuchi-no-nioi-ga-hakobu-nige-roto-koi-to-mizu-da",
+  "1527": "sabi-ruto-ookiku-naru-tetsu-ga-sanso-to-deatsu-te-fukuramu-chikara-ga-shinden-wo-waru",
+  "1528": "atatame-ruto-chijimu-mittsu-no-riyuu-kouzou-ga-koware-ru-shindou-ga-hiku-midare-ga-hiku",
+  "1529": "hikaru-tameni-sanso-wo-ubau-mono-wo-yameru-hotaru-no-hakkou-ha-nijuu-hitei-no-suitchi",
+  "1530": "hikari-ga-doku-yori-sakini-atta-hotaru-no-hakkou-ha-keikoku-dehanai",
+  "1531": "hikara-nai-hotaru-ha-hikare-ru-0-1-no-idenshi-to-sakujo-no-tochuu",
+  "1532": "ayu-changa-arashi-wo-shiru-3-tsuno-keiro-jiseki-ha-katamuki-to-kiatsu-wo-kubetsu-dekinai",
+  "1533": "ayu-changa-maruku-narutoki-taion-wo-houki-suru-mae-no-junbi",
+  "1534": "ame-no-nioi-ha-3-tsuno-jikan-de-todoku-kaminari-yori-sakini-jimen-yori-sakini-shokubutsu-yori-nochin",
+  "1535": "ayu-channo-mie-nai-hikari-3-tsuno-me-ga-onaji-hachou-wo-yomu",
+  "1536": "40-do-ga-samui-saamosutatto-wo-age-ru-karada-to-kowasu-karada",
+  "1537": "mado-ga-ayu-channi-mise-ru-2-tsuno-kasanatsu-ta-sekai-4-no-nai-ga-yoru-ninaruto-96-ninaru",
+  "1538": "pan-ga-furuku-narunoha-mizu-ga-nige-rukaradehanai-denpun-ga-mizu-wo-oshidashi-te-kesshou-ni-modoru-d",
+  "1539": "koori-ga-suberu-riyuu-ha-mizu-gadekitakaradehanai-hyoumen-ga-jibun-de-koware-rudake",
+  "1540": "kooru-tokini-suu-ki-ga-iki-de-jueki-wo-ugoka-su",
+  "1541": "kinoko-ga-koori-no-kami-wo-suka-su-kusatsu-ta-ki-ni-hae-ru-0-02mm-no-kami-no-koori-ga-nannichi-mo-ku",
+  "1542": "daremo-onaji-katachi-janai-koori-wo-yameru-busshitsu-ga-5-kai-dokuritsu-ni-umare-ta",
+  "1543": "koora-serumonoto-yameru-monono-kyoumen-saizu-to-noudo-ga-kettei-suru-koori-no-seifu",
+  "1544": "koora-serumonoto-yameru-monoha-onaji-katachi-ookisa-dakega-muki-wo-kae-ru",
+  "1545": "kumo-no-nakano-kodoku-1-shizuku-ni-1-hiki-de-iki-ru-bakuteria-no-2-tsuno-jinsei",
+  "1546": "1-hiki-de-teisokusuu-kumo-no-shizuku-no-naka-de-hitorigoto-ga-aizu-ninaru",
+  "1547": "sakurairo-ha-houkai-no-iro-kutsutsu-tamonoga-koware-ta-karada-wo-tootte-hifu-ni-nijimu",
+  "1548": "takai-oto-ga-sakini-kie-ru-riyuu-95-boruto-no-mottomo-hadaka-no-basho",
+  "1549": "teishi-ga-hizuke-ninaru-tsume-hone-ha-no-3-tsuno-chinmoku-no-tokei",
+  "1550": "tsumetai-monoga-omoi-shokkaku-ga-ondo-ni-uso-wotsuku-riyuu",
+  "380": "tako-no-ude-ha-jibun-de-kangae-ru-nou-no-sanpun-no-ni-ga-shintai-niaru",
+  "811": "doku-wo-ajiwa-u-nigami-ga-keihou-kara-kairaku-ni-hanten-surutoki",
+  "855": "genshi-mota-nai-shintai-ga-itamu-riyuu",
+};
 
 function byId(id) {
   return FRAGMENTS.find((fragment) => fragment.id === id);
 }
 
 function sourceHref(sourcePath) {
-  return `${SOURCE_BASE}${sourcePath}`;
+  const order = sourcePath.match(/^(\d+)_/)?.[1];
+  const slug = LAB_SLUGS[order];
+  return slug ? `${SOURCE_BASE}${slug}/` : SOURCE_BASE;
 }
 
 function makeFragmentCard(fragment) {
